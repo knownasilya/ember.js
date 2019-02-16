@@ -17,8 +17,24 @@ const Controller = EmberObject.extend(ControllerMixin);
 /**
   Creates a property that lazily looks up another controller in the container.
   Can only be used when defining another controller.
+  
+  Class Example:
+  
+  ```app/controllers/post.js
+  import Controller, {
+    inject as controller
+  } from '@ember/controller';
 
-  Example:
+  export default class PostController extends Controller {
+    @controller
+    posts;
+  }
+  ```
+  
+  Notice that when used in the context of a class, the `inject` property
+  is used as a decorator.
+
+  Classic Example:
 
   ```app/controllers/post.js
   import Controller, {
@@ -30,7 +46,7 @@ const Controller = EmberObject.extend(ControllerMixin);
   });
   ```
 
-  This example will create a `posts` property on the `post` controller that
+  Each of these examples create a `posts` property on the `post` controller that
   looks up the `posts` controller in the container, making it easy to
   reference other controllers.
 
